@@ -1,6 +1,9 @@
 name: MyFirstWorkflow
 
-on: push
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   my_first_job:
@@ -10,10 +13,10 @@ jobs:
       - name: Clone Repo
         run: git clone https://github.com/mayurimohite1710-dev/GITHUB-ACTION.git
 
-      - name: check files in repo
+      - name: Check files in repo
         run: |
-          cd Github-Actions
+          cd GITHUB-ACTION
           ls -l .github/workflows/
-    name: check
+
 
         
