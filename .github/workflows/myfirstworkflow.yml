@@ -1,16 +1,19 @@
-name: First GitHub Action
+name: MyFirstWorkflow
 
-on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
+on: push
 
 jobs:
-  first-job:
+  my_first_job:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Addition
-        run: expr 2 + 3
+      - name: Clone Repo
+        run: git clone https://github.com/mayurimohite1710-dev/GITHUB-ACTION.git
+
+      - name: check files in repo
+        run: |
+          cd Github-Actions
+          ls -l .github/workflows/
+    name: check
+
         
