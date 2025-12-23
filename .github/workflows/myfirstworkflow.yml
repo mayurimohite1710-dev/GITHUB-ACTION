@@ -15,3 +15,24 @@ jobs:
 
       - name: List files
         run: ls -la
+name: MyFirstWorkflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  my_second_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install node js
+        uses: actions/checkout@v6
+        with:
+          node-version: '14'
+
+      - name: Check node version
+        run: node --version
+
+
