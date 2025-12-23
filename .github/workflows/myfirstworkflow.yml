@@ -10,13 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clone Repo
-        run: git clone https://github.com/mayurimohite1710-dev/GITHUB-ACTION.git
-
-      - name: Check files in repo
-        run: |
-          cd GITHUB-ACTION
-          ls -l .github/workflows/
-
-
+      - name: Clone repo
+        uses: actions/checkout@v6
         
+
+      - name: list files
+        run: ls -la GITHUB-ACTION
