@@ -1,6 +1,7 @@
 name: First GitHub Action
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -10,5 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print welcome message
-        run: echo "Welcome to my first GitHub Actions workflow"
+      - name: Addition
+        run: expr 2 + 3
+        
