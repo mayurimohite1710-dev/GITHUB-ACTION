@@ -2,33 +2,19 @@ name: My First Workflow
 
 on:
   push:
-    branches:
-      - main
 
 jobs:
-  my_first_job:
+  configure-aws:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Create report file
-        run: echo "This is my first GitHub Actions workflow!" > report.txt
-
-      - name: Upload report
-        uses: actions/upload-artifact@v4
+      - name: AWS key setup
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          name: my-report
-          path: report.txt
-
-  check_artifact:
-    runs-on: self-hosted
-    needs: my_first_job
-
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: my-report
-
-      - name: Check artifact content
-        run: cat report.txt
-
+          aws-access-key-id: ${{ secrets.aws-access-key-id }}
+          aws-secret-access-key: ${{ secrets.aws-secret-access-key }}
+          aws-region: ap-south-1
+      - name: aws cli check
+        run: aws --version
+      - name: s3 bucket list
+        run: aws s3 ls  
