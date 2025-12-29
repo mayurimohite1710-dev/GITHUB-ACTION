@@ -15,13 +15,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1
 
-      - name: Check AWS CLI
-        run: aws --version
-
-      - name: List S3 Buckets
-        run: aws s3 ls
-
-
-    
+      - name: dockerhub login
+        uses: docker/login-action@v2
+        with:
+          username: ${{ vars.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
 
